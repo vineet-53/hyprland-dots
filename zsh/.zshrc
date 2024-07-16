@@ -122,8 +122,6 @@ alias root='cd $(froot)'
 alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
 alias codes='cd $(fcodes)'
 alias vi="vim "
-alias rmrs="sudo rm -r"
-alias rmr="rm -r"
 alias window="cd /mnt/window"
 alias d="cd /mnt/drive"
 alias e="cd /mnt/drive2"
@@ -133,9 +131,8 @@ alias ga="git add "
 alias gc="git commit -m"
 alias gr="git reset "
 alias gs="git status "
-alias clean="sh ~/.local/share/bin/cleanup.sh"
-alias wifi="sh ~/.local/share/bin/wifimenu.sh"
 alias server="npm run dev"
+alias t="tmux"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
