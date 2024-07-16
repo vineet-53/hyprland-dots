@@ -1,0 +1,129 @@
+#!/bin/sh
+
+# add more args here according to preference
+ARGS="--no-video"
+
+notification(){
+# change the icon to whatever you want. Make sure your notification server 
+# supports it and already configured.
+
+# Now it will receive argument so the user can rename the radio title
+# to whatever they want
+
+	notify-send "Playing Now: " "$@" --icon=media-tape
+}
+
+# number of the stream as per the $choice variable
+# name of the stream
+# additional tag to filter similar type of streams
+
+menu(){
+	printf "1. Lofi Girl \n"
+	printf "2. Viral TikTok Songs \n"
+	printf "3. Anime Lofi \n"
+	printf "4. Top Music 2024 \n"
+	printf "5. Bollywood Hits Mashup Songs\n"
+	printf "6. Dreamhop \n"
+	printf "7. NDTV 24x7 <news>\n"
+	printf "8. WION Live <news>\n"
+	printf "9. Coding Lofi\n"
+	printf "10.Phle Bhi Mein\n"
+	printf "11.Anxiety Motivation by Grand Mother\n"
+	printf "12.Lil Baby\n"
+	printf "13.Fein\n"
+}
+
+main() {
+	
+	choice=$(menu | rofi -dmenu | cut -d. -f1)
+
+	case $choice in
+		1)
+			notification "Lofi Girl ☕️🎶";
+            URL="https://www.youtube.com/watch?v=-EY97tZAkNY&ab_channel=CozyNordic"
+	    ADDITIONAL_ARGS="--volume=65"
+			break
+			;;
+		2)
+			notification "Viral TikTok Songs";
+            URL="https://www.youtube.com/watch?v=slKNtk0GFEE&ab_channel=LoveLifeLyrics"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+		3)
+			notification "Anime Vocal Lofi";
+            URL="https://www.youtube.com/watch?v=zavCTwkGseg&ab_channel=TokyoMusic"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+		 4)
+			notification "Top Music 2024";
+            URL="https://www.youtube.com/watch?v=uDKrbo1xgvk&ab_channel=LoveLifeLyrics"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+		5)
+			notification "Bollywood Hits Mashup Songs";
+            URL="https://www.youtube.com/watch?v=o4DGQkPRwyY&ab_channel=0125FX"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+		6)
+			notification "Dreamhop ☕️🎶";
+            URL="https://youtu.be/wkhLHTmS_GI"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+		7)
+			notification "NDTV 24x7 📰";
+            URL="https://youtu.be/WB-y7_ymPJ4"
+	    ADDITIONAL_ARGS=""
+			break
+			;;
+		
+		8)
+			notification "WION Live 📰"
+            URL="https://youtu.be/lmZRiDMK3OU"
+	    ADDITIONAL_ARGS=""
+			break
+			;;
+		9)
+			notification "Coding Lofi ☕️🎶";
+            URL="https://www.youtube.com/watch?v=4LIt_ICJyjk&ab_channel=Lofi%EC%BD%94%EB%94%A9"
+	    ADDITIONAL_ARGS="--volume=79"
+			break
+			;;
+		10)
+			notification "Phle Bhi Mein ";
+            URL="https://www.youtube.com/watch?v=kZGpkkfk2lA&list=RDkZGpkkfk2lA&start_radio=1&ab_channel=SRLofi"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+ 	11)
+			notification "Anxiety Relief By Yoga Institute";
+            URL="https://www.youtube.com/watch?v=td0PSS3lCQ4&ab_channel=TheYogaInstitute"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+	12)
+			notification "Lil Baby CentralCee";
+            URL="https://www.youtube.com/watch?v=pDddlvCfTiw&ab_channel=CentralCee"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+	13)
+			notification "Fein";
+            URL="https://www.youtube.com/watch?v=ZsaGS8q2dvs&ab_channel=DATOX"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+	
+
+
+		esac
+    # run mpv with args and selected url
+    # added title arg to make sure the pkill command kills only this instance of mpv
+    mpv $ARGS --title="radio-mpv" $URL $ADDITIONAL_ARGS
+}
+
+pkill -f radio-mpv || main

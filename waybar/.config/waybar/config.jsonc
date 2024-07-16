@@ -2,7 +2,7 @@
 	"layer": "bottom",
 	"spacing": 0,
 	"position": "bottom",
-	"height": 24,
+	"height": 30,
 	"exclusive": true,
 	"passthrough": false,
 	"gtk-layer-shell": true,
@@ -21,7 +21,6 @@
 		"temperature",
 		"battery",
 		"pulseaudio",
-    "tray",
 		"custom/r_padd",
 
 	],

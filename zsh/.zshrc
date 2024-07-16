@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
-export PATH="$PATH:/home/coder/.local/share/bin"
+export PATH="/bin:$HOME/.local/share/bin:$PATH"
 
 # Path to powerlevel10k theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
