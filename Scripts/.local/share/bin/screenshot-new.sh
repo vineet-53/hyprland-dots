@@ -1,14 +1,14 @@
 
 # Commands
-rofi_command="rofi -l 5"
+wofi_command="wofi -l 5"
 grimblast="grimblast --notify --freeze"
 
 # Buttons
-screen="1 󰍹 Capture screen"
-area="2 󰩬 Capture area"
-window="3  Capture active window"
-infive="4 󱑀 Take in 5s"
-inten="5 󱑇 Take in 10s"
+screen="1   󰍹  Capture screen"
+area="2  󰩬  Capture area"
+window="3    Capture active window"
+infive="4  󱑀  Take in 5s"
+inten="5  󱑇  Take in 10s"
 
 # Countdown Function
 countdown() {
@@ -56,7 +56,7 @@ shotarea() {
 # Variable passed to rofi
 options="$screen\n$area\n$window\n$infive\n$inten"
 
-chosen="$(echo -e "$options" | $rofi_command -p 'Take A Shot' -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | $wofi_command -p 'Take A Shot' -dmenu -selected-row 0)"
 sleep 1
 case $chosen in
     $screen)

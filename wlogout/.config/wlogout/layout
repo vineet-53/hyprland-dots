@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "~/.config/hypr/scripts/lock.sh",
+    "action" : "~/.local/share/bin/lock.sh",
     "text" : "Lock",
     "keybind" : "l"
 }
@@ -24,7 +24,7 @@
 }
 {
     "label" : "suspend",
-    "action" : "systemctl suspend",
+    "action" : "~/.local/share/bin/lock.sh & sleep 1 & systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }
