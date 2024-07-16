@@ -4,7 +4,7 @@
 ARGS="--no-video"
 
 notification(){
-# change the icon to whatever you want. Make sure your notification server 
+# change the icon to whatever you want. Make sure your notification server
 # supports it and already configured.
 
 # Now it will receive argument so the user can rename the radio title
@@ -34,8 +34,8 @@ menu(){
 }
 
 main() {
-	
-	choice=$(menu | rofi -dmenu | cut -d. -f1)
+
+	choice=$(menu | wofi -dmenu | cut -d. -f1)
 
 	case $choice in
 		1)
@@ -80,7 +80,7 @@ main() {
 	    ADDITIONAL_ARGS=""
 			break
 			;;
-		
+
 		8)
 			notification "WION Live 📰"
             URL="https://youtu.be/lmZRiDMK3OU"
@@ -117,7 +117,7 @@ main() {
 	    ADDITIONAL_ARGS="--volume=60"
 			break
 			;;
-	
+
 
 
 		esac

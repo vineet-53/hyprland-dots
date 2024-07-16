@@ -1,6 +1,6 @@
 
 # Commands
-wofi_command="wofi -l 5"
+wofi_command="wofi -l 5 -c ~/.config/wofi/config -s ~/.config/wofi/style.css"
 grimblast="grimblast --notify --freeze"
 
 # Buttons
