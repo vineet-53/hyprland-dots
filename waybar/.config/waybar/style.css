@@ -34,8 +34,8 @@
   border: none;
     border-radius: 0px;
   margin: 0;
-  font-family: "monospace";
-  font-size: 15px;
+  font-family: "MesloLGMNerdFontMono";
+  font-size: 13px;
   min-height: 15px;
 }
 
@@ -46,7 +46,7 @@
 }
 #workspaces button {
   padding: 0 5px;
-  min-width: 20px;
+  min-width: 10px;
   color: @mauve;
 }
 

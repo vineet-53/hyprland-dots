@@ -1,13 +1,12 @@
- xset r rate 250 30
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
+ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:/home/coder/.local/share/bin"
 
 # Path to powerlevel10k theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 ZSH_THEME="robbyrussell"
 # List of plugins used
-plugins=(git)
+plugins=(git history encode64 zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # In case a command is not found, try to find the package that has it
@@ -136,6 +135,7 @@ alias gr="git reset "
 alias gs="git status "
 alias clean="sh ~/.local/share/bin/cleanup.sh"
 alias wifi="sh ~/.local/share/bin/wifimenu.sh"
+alias server="npm run dev"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

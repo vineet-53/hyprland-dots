@@ -1,8 +1,8 @@
 {
-	"layer": "top",
+	"layer": "bottom",
 	"spacing": 0,
-	"position": "top",
-	"height": 30,
+	"position": "bottom",
+	"height": 24,
 	"exclusive": true,
 	"passthrough": false,
 	"gtk-layer-shell": true,
@@ -21,8 +21,9 @@
 		"temperature",
 		"battery",
 		"pulseaudio",
+    "tray",
 		"custom/r_padd",
-    "custom/power"
+
 	],
 	"custom/pomodoro": {
 		"format": "{} {icon}",
