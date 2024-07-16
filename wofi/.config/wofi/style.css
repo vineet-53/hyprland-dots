@@ -4,17 +4,19 @@
 }
 
 #window {
-  background: rgba(41, 46, 66, 0.5);
+  background: #1e1e2e;
   margin: auto;
   padding: 10px;
   border-radius: 3px;
-  border: 1px solid #b072d1;
+  border: 1px solid #6e738d;
 }
 
 #input {
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 15px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  font-family : "MesloLGMNerdFont";
+  font-size : 22px;
 }
 
 #outer-box {
@@ -31,7 +33,7 @@
 }
 
 #entry:selected {
-  background-color: #2e3440;
+  background-color: #494d64;
 }
 
 #text {

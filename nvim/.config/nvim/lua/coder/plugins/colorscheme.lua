@@ -1,33 +1,4 @@
-function ColorMyPencils()
-  local color = "rose-pine"
-  vim.cmd.colorscheme(color)
-  vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
-end
-
 return {
-  {
-    "erikbackman/brightburn.vim",
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    config = function()
-      require("tokyonight").setup({
-        style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-        transparent = true, -- Enable this to disable setting the background color
-        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-          sidebars = "dark", -- style for sidebars, see below
-          floats = "dark", -- style for floating windows
-        },
-      })
-      ColorMyPencils()
-    end,
-  },
-
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -37,7 +8,29 @@ return {
           transparency = true,
         },
       })
-      ColorMyPencils()
+      vim.cmd.colorscheme("rose-pine-moon")
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end,
   },
+
+  {
+    "navarasu/onedark.nvim",
+    enabled = false,
+    config = function()
+      require("onedark").setup({
+        style = "darker",
+      })
+      require("onedark").load()
+    end,
+  },
+  {
+    "kaiuri/nvim-juliana",
+    enabled = false,
+    lazy = false,
+    opts = { --[=[ configuration --]=]
+    },
+    config = true,
+  },
+  { "catppuccin/nvim", enabled = false, name = "catppuccin", priority = 1000 },
 }

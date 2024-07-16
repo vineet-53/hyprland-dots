@@ -1,8 +1,11 @@
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
 
 opt.number = true
 -- tabs & indentation
+
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces

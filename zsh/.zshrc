@@ -1,12 +1,12 @@
 # Path to your oh-my-zsh installation.
-ZSH=$HOME/.oh-my-zsh
-export PATH="/bin:$HOME/.local/share/bin:$PATH"
-
+ZSH=$HOME/.oh-my-zsh/
+export PATH="/bin:$PATH"
+# export PATH="/bin:$PATH"
 # Path to powerlevel10k theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 ZSH_THEME="robbyrussell"
 # List of plugins used
-plugins=(git history encode64 zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git sudo history encode64 copypath zsh-autosuggestions  zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # In case a command is not found, try to find the package that has it
@@ -84,7 +84,7 @@ alias .5='cd ../../../../..'
 alias mkdir='mkdir -p'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #Display Pokemon
 #pokemon-colorscripts --no-title -r 1,3,6
@@ -122,6 +122,8 @@ alias root='cd $(froot)'
 alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
 alias codes='cd $(fcodes)'
 alias vi="vim "
+alias rmrs="sudo rm -r"
+alias rmr="rm -r"
 alias window="cd /mnt/window"
 alias d="cd /mnt/drive"
 alias e="cd /mnt/drive2"
@@ -131,8 +133,8 @@ alias ga="git add "
 alias gc="git commit -m"
 alias gr="git reset "
 alias gs="git status "
-alias server="npm run dev"
-alias t="tmux"
+alias clean="sh ~/.local/share/bin/cleanup.sh"
+alias wifi="sh ~/.local/share/bin/wifimenu.sh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
