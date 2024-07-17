@@ -3,7 +3,9 @@ local opt = vim.opt
 
 opt.number = true
 -- tabs & indentation
+
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 
@@ -26,4 +28,4 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 vim.opt.clipboard = ""
 vim.opt.splitkeep = "cursor"
-vim.opt.formatoptions:remove({ "o" })
+vim.opt.formatoptions:remove({ "r", "o" })

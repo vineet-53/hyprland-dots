@@ -1,6 +1,5 @@
 return {
   "hrsh7th/nvim-cmp",
-
   event = "VimEnter",
   dependencies = {
     "hrsh7th/cmp-buffer", -- source for text in buffer
@@ -37,12 +36,15 @@ return {
       },
       mapping = cmp.mapping.preset.insert({
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-b>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ["<C-CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
@@ -51,9 +53,16 @@ return {
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "path" },
-        { name = "nvim_lsp" },
-        { name = "buffer" },
-        { name = "luasnip" },
+        { name = "nvim_lsp", keyword_length = 1 },
+        { name = "buffer", keyword_length = 3 },
+        { name = "luasnip", keyword_length = 2 },
+      }),
+      -- sources for autocompletion
+      sources = cmp.config.sources({
+        { name = "path" },
+        { name = "nvim_lsp", keyword_length = 1 },
+        { name = "buffer", keyword_length = 2 },
+        { name = "luasnip", keyword_length = 3 },
       }),
 
       -- configure lspkind for vs-code like pictograms in completion menu
