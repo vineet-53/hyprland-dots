@@ -43,7 +43,7 @@ vim.keymap.set("n", "<A-l>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<C-Tab>", "<C-^>", opts)
-vim.keymap.set({ "n", "i" }, "<C-BS>", 'vb"_d')
+vim.keymap.set("i", "<C-BS>", "<C-w>")
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/coder/core/keymaps.lua<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
