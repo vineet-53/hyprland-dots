@@ -23,7 +23,7 @@ return {
     require("lspkind")
 
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_vscode")
 
     cmp.setup({
       completion = {
