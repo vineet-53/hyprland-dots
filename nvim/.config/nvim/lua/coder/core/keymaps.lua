@@ -55,7 +55,7 @@ vim.keymap.set("n", "sx", "<C-w><C-o>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set({ "n", "v" }, ";y", [["+y]])
-vim.keymap.set({ "n", "v" }, ";d", [["_d]])
+vim.keymap.set({ "n", "v" }, ";d", [["+d]])
 -- move line up and down
 vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
 vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })

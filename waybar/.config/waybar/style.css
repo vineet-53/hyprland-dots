@@ -38,7 +38,6 @@
   font-size: 15px;
   min-height: 20px;
 }
-
 #waybar {
   background: transparent;
   background: @surface0;
@@ -109,7 +108,8 @@
 
 #network {
   color: #c678dd;
-  min-width: 200px;
+  margin : 0 5px;
+  font-size: 14px;
 }
 
 #tray {

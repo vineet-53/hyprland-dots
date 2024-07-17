@@ -21,8 +21,8 @@
 		"temperature",
 		"battery",
 		"pulseaudio",
+    "network",
 		"custom/r_padd",
-
 	],
 	"custom/pomodoro": {
 		"format": "{} {icon}",
@@ -113,8 +113,7 @@
 	//     ]
 	//   },
 	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format": "| {essid} ({signalStrength}%) |",
+		"format": "{essid} ({signalStrength}%)",
 		"format-ethernet": "{ipaddr}/{cidr} ",
 		"tooltip-format": "{ifname} via {gwaddr} ",
 		"format-linked": "{ifname} (No IP) ",
@@ -123,7 +122,6 @@
 	},
 	"battery": {
 		"states": {
-			// "good": 95,
 			"warning": 30,
 			"critical": 15
 		},
@@ -131,15 +129,29 @@
 		"format-charging": "{capacity}% ",
 		"format-plugged": "{capacity}% ",
 		"format-alt": "{time} {icon}",
-		// "format-good": "", // An empty format will hide the module
-		// "format-full": "",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
+		"format-icons": {
+      "default": [
+            "",
+            "",
+            "",
+            "",
+            "",
+      ],
+    "charging": [
+            "󰢜",
+            "󰂆",
+            "󰂇",
+            "󰂈",
+            "󰢝",
+            "󰂉",
+            "󰢞",
+            "󰂊",
+            "󰂋",
+            "󰂅"
+	    ],
+
+
+    }
 	},
 	"tray": {
 		"icon-size": 18,

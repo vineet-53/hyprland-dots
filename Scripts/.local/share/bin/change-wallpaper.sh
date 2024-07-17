@@ -22,7 +22,7 @@ while true; do
   selectedWallpaper="${wallpapers[$wallpaperIndex]}"
 
   # Set the wallpaper using swww img
-  swww img -t=simple "$selectedWallpaper"
+  swww img --transition-step=255 "$selectedWallpaper"
   break
   # (Optional) Add delay between wallpaper changes (modify as needed)
   # sleep 3600  # Change wallpaper every hour (comment out for continuous)
