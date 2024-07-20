@@ -23,10 +23,34 @@ return {
     })
 
     telescope.setup({
+      pickers = {
+        live_grep = {
+          file_ignore_patterns = { "node_modules", ".git", ".venv" },
+          additional_args = function(_)
+            return { "--hidden" }
+          end,
+        },
+        find_files = {
+          file_ignore_patterns = { "node_modules", ".git", ".venv" },
+          hidden = true,
+        },
+      },
+      extensions = {
+        "fzf",
+      },
+      file_ignore_patterns = {
+        "./node_modules/*",
+        "node_modules",
+        "^node_modules/*",
+        "node_modules/*",
+        ".git",
+        "./.git",
+      },
       defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "bottom" },
-        sorting_strategy = "descending",
+        hidden = true,
+        layout_strategy = "vertical",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
         winblend = 0,
         path_display = { "smart" },
         mappings = {
@@ -42,32 +66,28 @@ return {
 
     telescope.load_extension("fzf")
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", ";f", builtin.find_files, { desc = "[S]earch [F]iles" })
+    vim.keymap.set("n", ";f", function()
+      require("telescope.builtin").find_files({ hidden = true, layout_config = { prompt_position = "top" } })
+    end, { desc = "[S]earch [F]iles" })
     vim.keymap.set("n", ";g", builtin.live_grep, { desc = "[G]rep String" })
     -- vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-    -- vim.keymap.set("n", "", builtin.buffers, { desc = "[ ] Find existing buffers" })
+    vim.keymap.set("n", ";b", builtin.buffers, { desc = "[ ] Find existing buffers" })
     vim.keymap.set("n", "[h", builtin.help_tags, { desc = "[S]earch [H]elp" })
     vim.keymap.set("n", ";o", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set("n", ";e", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     vim.keymap.set("n", ";r", builtin.resume, { desc = "[S]earch [R]esume" })
     vim.keymap.set("n", ";s", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-    -- vim.keymap.set('n', '', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 
-    -- Enable Telescope extensions if they are installed
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
 
-    -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set("n", ";ds", function()
-      -- You can pass additional configuration to Telescope to change the theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
         winblend = 10,
         previewer = false,
       }))
     end, { desc = "[/] Fuzzily search in current buffer" })
 
-    -- It's also possible to pass additional configuration options.
-    --  See `:help telescope.builtin.live_grep()` for information about particular keys
     vim.keymap.set("n", ";dg", function()
       builtin.live_grep({
         grep_open_files = true,
@@ -75,7 +95,6 @@ return {
       })
     end, { desc = "[S]earch [/] in Open Files" })
 
-    -- Shortcut for searching your Neovim configuration files
     vim.keymap.set("n", ";df", function()
       builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
     end, { desc = "[S]earch [N]eovim files" })
