@@ -24,7 +24,7 @@
 }
 {
     "label" : "suspend",
-    "action" : "~/.local/share/bin/lock.sh & sleep 1 & systemctl suspend",
+    "action" : "systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }

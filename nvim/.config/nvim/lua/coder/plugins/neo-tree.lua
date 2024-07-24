@@ -7,7 +7,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
-  config = function()
+  config = function(_, opts)
     local reveal_file = vim.fn.getcwd()
     require("neo-tree").setup({
       window = {
@@ -19,6 +19,10 @@ return {
           hide_dotfiles = false,
           hide_gitignored = false,
           hide_hidden = false,
+        },
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = true,
         },
       },
       follow_current_file = {
@@ -37,8 +41,8 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = "a", -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified = "m", -- or "", but this is redundant info if you use git_status_colors on the name
+            added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
             deleted = "✖", -- this can only be used in the git_status source
             renamed = "", -- this can only be used in the git_status source
             -- Status type
@@ -58,7 +62,7 @@ return {
       reveal_file = reveal_file, -- path to file or folder to reveal
       reveal_force_cwd = true, -- change cwd without asking if needed
     })
-    vim.keymap.set("n", "<space>e", ":Neotree position=left toggle=true<CR>", {})
+    vim.keymap.set("n", "<space>e", ":Neotree position=left toggle<CR>", {})
     vim.keymap.set("n", "<leader>b", ":Neotree buffers reveal float<CR>", {})
   end,
 }

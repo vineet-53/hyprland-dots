@@ -3,24 +3,21 @@ local opt = vim.opt
 
 opt.number = true
 -- tabs & indentation
+opt.relativenumber = true
 
-opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
 
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
-
-opt.wrap = false
-
+opt.wrap = true
 -- search settings
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
-
+opt.incsearch = true
+opt.scrolloff = 8
+opt.updatetime = 50
 opt.termguicolors = true
-opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
-
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- split windows
 opt.splitright = true -- split vertical window to the right

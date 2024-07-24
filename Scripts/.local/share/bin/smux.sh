@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 # find the folder to open in tmux session
 cd $(fzf --walker=,dir,hidden --walker-root=$HOME/Codes)
-SESSION_NAME="Study-Notion"
 # // check the session is there or not
-if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+
+if tmux has-session  2>/dev/null; then
     echo "Session $SESSION_NAME already exists. Attaching to it."
     tmux attach-session -t "$SESSION_NAME"
     exit 0

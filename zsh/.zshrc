@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh/
-export PATH="/bin:$PATH"
+export PATH="/bin:$HOME/.local/share/bin:$PATH"
 # export PATH="/bin:$PATH"
 # Path to powerlevel10k theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -133,8 +133,9 @@ alias ga="git add "
 alias gc="git commit -m"
 alias gr="git reset "
 alias gs="git status "
-alias clean="sh ~/.local/share/bin/cleanup.sh"
-alias wifi="sh ~/.local/share/bin/wifimenu.sh"
+alias server="npm run dev"
+alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
+alias t="sh ~/.local/share/bin/smux.sh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

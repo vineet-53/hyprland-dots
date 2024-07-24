@@ -18,11 +18,11 @@
 	"modules-right": [
 		"custom/pomodoro",
 		"mpd",
+    "memory",
 		"temperature",
 		"battery",
-		"pulseaudio",
-    "network",
 		"custom/r_padd",
+    "network",
 	],
 	"custom/pomodoro": {
 		"format": "{} {icon}",
