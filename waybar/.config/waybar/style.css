@@ -45,7 +45,7 @@ button:hover {
 }
 
 #workspaces button.active {
-  background-color: @mauve;
+  background-color: @peach;
   color: @crust;
   border-top: 2px solid @mauve;
 }
