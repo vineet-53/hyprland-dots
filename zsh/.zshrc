@@ -136,7 +136,9 @@ alias gs="git status "
 alias server="npm run dev"
 alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
 alias t="sh ~/.local/share/bin/smux.sh"
+alias view="yazi "
 export NVM_DIR="$HOME/.nvm"
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
