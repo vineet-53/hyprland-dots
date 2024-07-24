@@ -9,7 +9,7 @@
 
 window#waybar {
   background: transparent;
-  background-color: @surface0;
+  background-color: @base;
   color: @overlay0;
   transition-property: background-color;
   transition-duration: 0.1s;
@@ -45,9 +45,9 @@ button:hover {
 }
 
 #workspaces button.active {
-  background-color: @peach;
-  color: @crust;
-  border-top: 2px solid @mauve;
+  background-color: @mauve;
+  color: @base;
+  /* border-bottom: 2px solid @rosewater; */
 }
 
 #workspaces button.urgent {

@@ -4,30 +4,11 @@ export PATH="/bin:$HOME/.local/share/bin:$PATH"
 # export PATH="/bin:$PATH"
 # Path to powerlevel10k theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+eval "$(starship init zsh)"
 # List of plugins used
 plugins=(git sudo history encode64 copypath zsh-autosuggestions  zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
-
-# In case a command is not found, try to find the package that has it
-function command_not_found_handler {
-    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
-    printf 'zsh: command not found: %s\n' "$1"
-    local entries=( ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"} )
-    if (( ${#entries[@]} )) ; then
-        printf "${bright}$1${reset} may be found in the following packages:\n"
-        local pkg
-        for entry in "${entries[@]}" ; do
-            local fields=( ${(0)entry} )
-            if [[ "$pkg" != "${fields[2]}" ]] ; then
-                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
-            fi
-            printf '    /%s\n' "${fields[4]}"
-            pkg="${fields[2]}"
-        done
-    fi
-    return 127
-}
 
 # Detect the AUR wrapper
 if pacman -Qi yay &>/dev/null ; then
@@ -137,8 +118,16 @@ alias server="npm run dev"
 alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
 alias t="sh ~/.local/share/bin/smux.sh"
 alias view="yazi "
+alias vim="nvim "
 export NVM_DIR="$HOME/.nvm"
-
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# autopair
+if [[ ! -d ~/.zsh-autopair ]]; then
+  git clone https://github.com/hlissner/zsh-autopair ~/.zsh-autopair
+fi
+
+source ~/.zsh-autopair/autopair.zsh
+autopair-init
 
