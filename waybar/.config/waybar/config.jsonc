@@ -22,6 +22,7 @@
     "tooltip-format": "{time}"
   },
   "network": {
+    "on-click": "sh ~/.local/share/bin/wifimenu.sh",
     "format-wifi": "<span size='10000' foreground='#f5e0dc'>  </span>{essid}",
     "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
     "format-linked": "{ifname} (No IP) ",

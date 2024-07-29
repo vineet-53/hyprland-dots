@@ -14,6 +14,7 @@ opt.wrap = true
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 opt.incsearch = true
+
 opt.scrolloff = 8
 opt.updatetime = 50
 opt.termguicolors = true

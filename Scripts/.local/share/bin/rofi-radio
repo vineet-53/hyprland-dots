@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # add more args here according to preference
-ARGS="--no-video"
+ARGS="--no-video --loop-file=inf --loop-playlist=inf"
 
 notification(){
 # change the icon to whatever you want. Make sure your notification server
@@ -31,6 +31,7 @@ menu(){
 	printf "11.Anxiety Motivation by Grand Mother\n"
 	printf "12.Lil Baby\n"
 	printf "13.Fein\n"
+	printf "14.Woah Raat\n"
 }
 
 main() {
@@ -117,13 +118,20 @@ main() {
 	    ADDITIONAL_ARGS="--volume=60"
 			break
 			;;
+          14)
+			notification "Woah Raat";
+            URL="https://www.youtube.com/watch?v=bvAS1avuOpY&ab_channel=Raftaar"
+	    ADDITIONAL_ARGS="--volume=60"
+			break
+			;;
+
 
 
 
 		esac
     # run mpv with args and selected url
     # added title arg to make sure the pkill command kills only this instance of mpv
-    mpv $ARGS --title="radio-mpv" $URL $ADDITIONAL_ARGS
+    mpv $ARGS  $URL $ADDITIONAL_ARGS
 }
 
-pkill -f radio-mpv || main
+pkill -f mpv || pkill -f wofi || main

@@ -75,7 +75,7 @@ return {
     vim.keymap.set("n", "[h", builtin.help_tags, { desc = "[S]earch [H]elp" })
     vim.keymap.set("n", ";o", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set("n", ";e", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-    vim.keymap.set("n", ";r", builtin.resume, { desc = "[S]earch [R]esume" })
+    -- vim.keymap.set("n", ";r", builtin.resume, { desc = "[S]earch [R]esume" })
     vim.keymap.set("n", ";s", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 
     pcall(require("telescope").load_extension, "fzf")
