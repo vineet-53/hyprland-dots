@@ -1,13 +1,39 @@
 function ColorMyPencils(color)
-  color = color or "rose-pine"
+  color = color or "rose-pine-moon"
   vim.cmd.colorscheme(color)
-  vim.api.nvim_set_hl(0, "Normal", { bg = "#1e1e2e" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e1e2e" })
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
-return {
 
+return {
+  {
+    "ellisonleao/gruvbox.nvim",
+    config = function()
+      ColorMyPencils("gruvbox")
+    end,
+  },
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = true,
+    enabled = false,
+    config = function()
+      vim.o.background = "dark"
+      local c = require("vscode.colors").get_colors()
+      require("vscode").setup({
+        italic_comments = false,
+        underline_links = true,
+        disable_nvimtree_bg = true,
+        color_overrides = {},
+        group_overrides = {
+          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+        },
+      })
+      vim.cmd.colorscheme("vscode")
+    end,
+  },
   {
     "catppuccin/nvim",
+    enabled = false,
     config = function()
       require("catppuccin").setup({
         integrations = {

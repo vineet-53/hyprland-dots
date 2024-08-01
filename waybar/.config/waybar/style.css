@@ -9,11 +9,11 @@
 
 window#waybar {
   background: transparent;
-  background-color: @surface0;
+  background-color: @mantle;
   color: @overlay0;
   transition-property: background-color;
   transition-duration: 0.1s;
-  border-bottom: 1px solid @overlay1;
+  border-bottom: 1px solid @overlay0;
 }
 
 #window {
