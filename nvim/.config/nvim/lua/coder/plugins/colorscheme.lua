@@ -1,68 +1,60 @@
 function ColorMyPencils(color)
   color = color or "rose-pine-moon"
   vim.cmd.colorscheme(color)
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  vim.api.nvim_set_hl(0, "Normal", { bg = "black" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "black" })
 end
-
 return {
   {
     "ellisonleao/gruvbox.nvim",
+    name = "gruvbox",
     config = function()
+      require("gruvbox").setup({
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = false,
+        bold = true,
+        italic = {
+          strings = false,
+          emphasis = false,
+          comments = true,
+          operators = false,
+          folds = false,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = true, -- invert background for search, diffs, statuslines and errors
+        contrast = "", -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = false,
+      })
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      require("tokyonight").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        transparent = true, -- Enable this to disable setting the background color
+        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+        styles = {
+          -- Style to be applied to different syntax groups
+          -- Value is any valid attr-list value for `:help nvim_set_hl`
+          comments = { italic = false },
+          keywords = { italic = false },
+          -- Background styles. Can be "dark", "transparent" or "normal"
+          sidebars = "dark", -- style for sidebars, see below
+          floats = "dark", -- style for floating windows
+        },
+      })
       ColorMyPencils("gruvbox")
-    end,
-  },
-  {
-    "Mofiqul/vscode.nvim",
-    lazy = true,
-    enabled = false,
-    config = function()
-      vim.o.background = "dark"
-      local c = require("vscode.colors").get_colors()
-      require("vscode").setup({
-        italic_comments = false,
-        underline_links = true,
-        disable_nvimtree_bg = true,
-        color_overrides = {},
-        group_overrides = {
-          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-        },
-      })
-      vim.cmd.colorscheme("vscode")
-    end,
-  },
-  {
-    "catppuccin/nvim",
-    enabled = false,
-    config = function()
-      require("catppuccin").setup({
-        integrations = {
-          cmp = true,
-          fidget = true,
-          gitsigns = true,
-          harpoon = true,
-          indent_blankline = {
-            enabled = false,
-            scope_color = "sapphire",
-            colored_indent_levels = false,
-          },
-          mason = true,
-          native_lsp = { enabled = true },
-          noice = true,
-          notify = true,
-          symbols_outline = true,
-          telescope = true,
-          treesitter = true,
-          treesitter_context = true,
-        },
-      })
-
-      vim.cmd.colorscheme("catppuccin-macchiato")
-
-      -- Hide all semantic highlights until upstream issues are resolved (https://github.com/catppuccin/nvim/issues/480)
-      for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-        vim.api.nvim_set_hl(0, group, {})
-      end
     end,
   },
 }

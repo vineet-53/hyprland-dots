@@ -1,13 +1,11 @@
 vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "x", '"_x')
--- Increment / Decrement
-vim.keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-vim.keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
-vim.keymap.set("n", "<leader>a", "gg^vG$")
+
 -- move line up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- cursor don't move at end easily
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<Tab>", "%")
@@ -22,25 +20,21 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "G", "Gzz")
 vim.keymap.set("n", "gg", "ggzz")
 vim.keymap.set("n", "gd", "gdzz")
+
 -- vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
 vim.keymap.set("n", "%", "%zz")
 vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "#", "#zz")
 
--- quick write , save and exit
-vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { silent = false })
-vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { silent = false })
-vim.keymap.set("n", "<leader>z", "<cmd>wq<cr>", { silent = false })
-
 -- find and replace
-vim.keymap.set({ "n", "v" }, "S", function()
+vim.keymap.set("n", "<A-l>", function()
   local cmd = ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>"
   local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
   vim.api.nvim_feedkeys(keys, "n", false)
 end)
 
-vim.keymap.set("n", "<leader>S", function()
+vim.keymap.set("n", "<leader>s", function()
   require("spectre").toggle()
 end)
 
@@ -54,7 +48,13 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>f", function()
+  local client = vim.lsp.get_active_clients({ bufnr = 0 })[1]
+  if client and client.supports_method("textDocument/formatting") then
+    vim.lsp.buf.format()
+  else
+  end
+end)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -62,9 +62,6 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- Oil lua
--- vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
 -- move windows
 vim.keymap.set("n", "sv", "<C-w>v")
@@ -82,9 +79,6 @@ vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window 
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 -- vim.keymap.set({ "v", "i" }, "ii", "<Esc>")
--- for input delay
---
-vim.keymap.set("t", "<space>", "<space>")
 -- git signs
 vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
 vim.keymap.set("n", "<leader>gf", function()
@@ -115,3 +109,22 @@ vim.keymap.set("n", "<leader>gf", function()
     require("telescope.builtin").git_files()
   end
 end, { desc = "Search [G]it [F]iles" })
+
+local keymap = vim.keymap
+
+-- General
+keymap.set("n", "<leader>q", ":qa! <cr>", opts)
+keymap.set("n", "<leader>a", "gg<S-v>G", opts)
+keymap.set("v", "<", "<gv", opts)
+keymap.set("v", ">", ">gv", opts)
+keymap.set("n", "<C-n>", ":tabnew <cr>", opts)
+keymap.set("n", "<leader>x", "<cmd> bdelete <cr>", opts)
+
+-- cpp compile commands
+keymap.set("n", "<F5>", ":w <bar> !clear && g++ %:r.cpp -o %:r.exe<CR> <bar> :!./%:r.exe<CR> ")
+keymap.set("n", "<F9>", ":w <bar> !clear && g++ %:r.cpp -o %:r.exe <CR>", opts)
+keymap.set("n", "<F10>", ":!./%:r.exe<CR>", opts)
+
+-- Increment / Decrement
+vim.keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
+vim.keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement

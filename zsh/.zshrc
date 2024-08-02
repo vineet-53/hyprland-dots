@@ -16,7 +16,6 @@ if pacman -Qi yay &>/dev/null ; then
 elif pacman -Qi paru &>/dev/null ; then
    aurhelper="paru"
 fi
-
 function in {
     local -a inPkg=("$@")
     local -a arch=()
@@ -75,7 +74,7 @@ alias clones="cd ~/Downloads/clones"
 alias si="sudo apt install "
 alias m="mkdir "
 #alias b="cd .."
-alias cpd="cd ~/Codes/cp"
+alias cpro="sh ~/.local/share/bin/competetive-programming.sh "
 alias dev="cd ~/Codes/Web-Development"
 alias ml="cd ~/Codes/MachineLearning"
 alias desk="cd ~/Desktop"
@@ -102,7 +101,6 @@ alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
 alias root='cd $(froot)'
 alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
 alias codes='cd $(fcodes)'
-alias vi="vim "
 alias rmrs="sudo rm -r"
 alias rmr="rm -r"
 alias window="cd /mnt/window"
@@ -118,9 +116,9 @@ alias server="npm run dev"
 alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
 alias t="sh ~/.local/share/bin/smux.sh"
 alias view="yazi "
-alias vim="nvim "
 alias t="tmux attach || tmux"
 alias hdd="cd /mnt/hdd"
+alias vim="nvim "
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

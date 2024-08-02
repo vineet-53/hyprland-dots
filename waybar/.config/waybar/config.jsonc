@@ -1,5 +1,5 @@
 {
-  "position": "top",
+  "position": "bottom",
   "modules-left": ["hyprland/workspaces"],
   "modules-right": ["custom/pomodoro" , "network", "pulseaudio", "battery", "clock"],
   "clock": {

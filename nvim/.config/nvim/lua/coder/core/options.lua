@@ -1,6 +1,7 @@
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
 
+vim.opt.guicursor = ""
 opt.number = true
 -- tabs & indentation
 opt.rnu = true
