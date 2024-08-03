@@ -1,6 +1,6 @@
 #!/bin/sh
 cd ~/Codes/cp
-SESSION_NAME="Competetive-Programming"
+SESSION_NAME="codeforces"
 if tmux has-session -t $SESSION_NAME 2>/dev/null; then
     echo "Session $SESSION_NAME already exists. Attaching to it."
     tmux attach-session -t $SESSION_NAME
