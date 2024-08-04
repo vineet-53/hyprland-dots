@@ -12,7 +12,7 @@
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "shutdown",
     "text" : "Shutdown",
     "keybind" : "s"
 }

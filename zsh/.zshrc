@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh/
-export PATH="/bin:$HOME/.local/share/bin:$PATH"
+export PATH="/bin:$HOME/.local/share/bin:$HOME/.venv/bin/pip:$HOME/.venv/bin/python:$PATH"
 # export PATH="/bin:$PATH"
 # Path to powerlevel10k theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -119,8 +119,20 @@ alias view="yazi "
 alias t="tmux attach || tmux"
 alias hdd="cd /mnt/hdd"
 alias vim="nvim "
+alias pip="~/.venv/bin/pip "
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+# nvim lazygit config
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    alias nvim=nvr -cc split --remote-wait +'set bufhidden=wipe'
+fi
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+    export EDITOR="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+else
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+fi

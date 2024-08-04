@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "x", '"_x')
 
+-- select a line
+vim.keymap.set("n" , "val" , "V")
 -- move line up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -43,7 +45,7 @@ vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "H", "^")
 
 -- greatest remap ever pasting but not changing the register
-vim.keymap.set("x", "<leader>p", [["_dP]])
+-- vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -117,7 +119,6 @@ keymap.set("n", "<leader>q", ":qa! <cr>", opts)
 keymap.set("n", "<leader>a", "gg<S-v>G", opts)
 keymap.set("v", "<", "<gv", opts)
 keymap.set("v", ">", ">gv", opts)
-keymap.set("n", "<C-n>", ":tabnew <cr>", opts)
 keymap.set("n", "<leader>x", "<cmd> bdelete <cr>", opts)
 
 -- cpp compile commands

@@ -1,6 +1,5 @@
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
-
 vim.opt.guicursor = ""
 opt.number = true
 -- tabs & indentation
@@ -10,7 +9,7 @@ opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
 
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
-opt.wrap = true
+opt.wrap = false
 -- search settings
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive

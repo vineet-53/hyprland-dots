@@ -6,8 +6,6 @@ return {
     local ui = require("harpoon.ui")
     vim.keymap.set("n", ";a", mark.add_file)
     vim.keymap.set("n", ";h", ui.toggle_quick_menu)
-    vim.keymap.set("n", ";n", ui.nav_next)
-    vim.keymap.set("n", ";r", ui.nav_prev)
     vim.keymap.set("n", ";1", function()
       ui.nav_file(1)
     end)

@@ -1,7 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   event = "VimEnter",
-  enabled = false,
   branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -56,14 +55,14 @@ return {
         },
       },
     })
-    require("neo-tree.command").execute({
-      action = "focus", -- OPTIONAL, this is the default value
-      source = "filesystem", -- OPTIONAL, this is the default value
-      position = "left", -- OPTIONAL, this is the default value
-      reveal_file = reveal_file, -- path to file or folder to reveal
-      reveal_force_cwd = true, -- change cwd without asking if needed
-    })
-    vim.keymap.set("n", "<space>e", ":Neotree position=left toggle<CR>", {})
-    vim.keymap.set("n", "<leader>b", ":Neotree buffers reveal float<CR>", {})
+    -- require("neo-tree.command").execute({
+    --   action = "focus", -- OPTIONAL, this is the default value
+    --   source = "filesystem", -- OPTIONAL, this is the default value
+    --   position = "left", -- OPTIONAL, this is the default value
+    --   reveal_file = reveal_file, -- path to file or folder to reveal
+    --   reveal_force_cwd = true, -- change cwd without asking if needed
+    -- })
+    vim.keymap.set("n", "<C-n>", ":Neotree position=left toggle<CR>", {})
+    -- vim.keymap.set("n", "<leader>b", ":Neotree buffers reveal float<CR>", {})
   end,
 }
