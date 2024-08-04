@@ -8,34 +8,44 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local actions = require("telescope.actions")
+      local opts = {
+        hidden = true,
+        themes = "get_ivy",
+        layout_strategies = "vertical",
+        layout_config = { height = 0.8, width = 0.8, prompt_position = "top" },
+        sorting_strategy = "ascending",
+        previewer = false,
+      }
       require("telescope").setup({
-        pickers = {
-          find_files = {
-            hidden = true,
-            themes = "get_ivy",
-            layout_strategies = "vertical",
-            layout_config = { height = 0.8, width = 0.8, prompt_position = "top" },
-            sorting_strategy = "ascending",
-            previewer = false,
-          },
-        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown(),
           },
         },
       })
+
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", ";f", builtin.find_files, {})
-      vim.keymap.set("n", ";g", builtin.live_grep, {})
+      vim.keymap.set("n", ";f", function()
+        builtin.find_files(opts)
+      end, {})
+
+      vim.keymap.set("n", "<C-p>", function()
+        builtin.git_files(opts)
+      end, {})
+
+      vim.keymap.set("n", ";g", function()
+        builtin.live_grep(opts)
+      end, {})
+
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", ";f", builtin.find_files, { desc = "[F]ind Files" })
-      vim.keymap.set("n", ";g", builtin.live_grep, { desc = "[G]rep String" })
-      vim.keymap.set("n", ";b", builtin.buffers, { desc = "[F]ind Buffers" })
+      vim.keymap.set("n", ";b", function()
+        builtin.buffers(opts)
+      end, { desc = "[F]ind Buffers" })
+
       vim.keymap.set("n", ";s", function()
-        local word = vim.fn.expand("<cword>")
-        builtin.grep_string({ search = word })
-      end, { desc = "[S]earch current [W]ord" })
+        builtin.grep_string({ search = vim.fn.input("Grep >> ") })
+      end)
+
       vim.keymap.set("n", ";ds", function()
         builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
           winblend = 10,

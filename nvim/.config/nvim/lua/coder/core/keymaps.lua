@@ -45,7 +45,7 @@ vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "H", "^")
 
 -- greatest remap ever pasting but not changing the register
--- vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
