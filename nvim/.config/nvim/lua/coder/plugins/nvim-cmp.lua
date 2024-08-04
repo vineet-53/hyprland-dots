@@ -1,3 +1,4 @@
+if false then
 return {
   "hrsh7th/nvim-cmp",
   event = "VimEnter",
@@ -50,14 +51,6 @@ return {
         { name = "buffer", keyword_length = 3 },
         { name = "luasnip", keyword_length = 2 },
       }),
-      -- sources for autocompletion
-      sources = cmp.config.sources({
-        { name = "path" },
-        { name = "nvim_lsp", keyword_length = 1 },
-        { name = "buffer", keyword_length = 2 },
-        { name = "luasnip", keyword_length = 3 },
-      }),
-
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
         fields = { "menu", "abbr", "kind" },
@@ -74,4 +67,5 @@ return {
       },
     })
   end,
-}
+}end
+return {}

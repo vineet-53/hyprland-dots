@@ -44,9 +44,6 @@ end)
 vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "H", "^")
 
--- greatest remap ever pasting but not changing the register
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
@@ -54,7 +51,6 @@ vim.keymap.set("n", "<leader>f", function()
   local client = vim.lsp.get_active_clients({ bufnr = 0 })[1]
   if client and client.supports_method("textDocument/formatting") then
     vim.lsp.buf.format()
-  else
   end
 end)
 
@@ -71,9 +67,11 @@ vim.keymap.set("n", "ss", "<C-w>s")
 vim.keymap.set("n", "sx", "<C-w><C-o>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- _ is register which not store but + do
 vim.keymap.set({ "n", "v" }, ";y", [["+y]])
 vim.keymap.set({ "n", "v" }, ";d", [["+d]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Resize window using <ctrl> arrow keys
 vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
@@ -81,37 +79,37 @@ vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window 
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 -- vim.keymap.set({ "v", "i" }, "ii", "<Esc>")
--- git signs
-vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
-vim.keymap.set("n", "<leader>gf", function()
-  local cmd = {
-    "sort",
-    "-u",
-    "<(git diff --name-only --cached)",
-    "<(git diff --name-only)",
-    "<(git diff --name-only --diff-filter=U)",
-  }
 
-  local utils = {}
-  utils.is_git_directory = function()
-    local result = vim.fn.system("git rev-parse --is-inside-work-tree")
-    if vim.v.shell_error == 0 and result:find("true") then
-      return true
-    else
-      return false
-    end
-  end
-  if not utils.is_git_directory() then
-    vim.notify(
-      "Current project is not a git directory",
-      vim.log.levels.WARN,
-      { title = "Telescope Git Files", git_command = cmd }
-    )
-  else
-    require("telescope.builtin").git_files()
-  end
-end, { desc = "Search [G]it [F]iles" })
-
+-- GIT FILES FINDER
+-- vim.keymap.set("n", "<leader>gf", function()
+--   local cmd = {
+--     "sort",
+--     "-u",
+--     "<(git diff --name-only --cached)",
+--     "<(git diff --name-only)",
+--     "<(git diff --name-only --diff-filter=U)",
+--   }
+--
+--   local utils = {}
+--   utils.is_git_directory = function()
+--     local result = vim.fn.system("git rev-parse --is-inside-work-tree")
+--     if vim.v.shell_error == 0 and result:find("true") then
+--       return true
+--     else
+--       return false
+--     end
+--   end
+--   if not utils.is_git_directory() then
+--     vim.notify(
+--       "Current project is not a git directory",
+--       vim.log.levels.WARN,
+--       { title = "Telescope Git Files", git_command = cmd }
+--     )
+--   else
+--     require("telescope.builtin").git_files()
+--   end
+-- end, { desc = "Search [G]it [F]iles" })
+--
 local keymap = vim.keymap
 
 -- General
@@ -119,7 +117,6 @@ keymap.set("n", "<leader>q", ":qa! <cr>", opts)
 keymap.set("n", "<leader>a", "gg<S-v>G", opts)
 keymap.set("v", "<", "<gv", opts)
 keymap.set("v", ">", ">gv", opts)
-keymap.set("n", "<leader>x", "<cmd> bdelete <cr>", opts)
 
 -- cpp compile commands
 keymap.set("n", "<F5>", ":w <bar> !clear && g++ %:r.cpp -o %:r.exe<CR> <bar> :!./%:r.exe<CR> ")

@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
-  { { import = "coder.plugins.colorscheme" }, { import = "coder.plugins" }, { import = "coder.plugins.lsp" } },
+  { { import = "coder.plugins.colorscheme" }, { import = "coder.plugins" }  },
   {
     checker = {
       enabled = true,

@@ -132,3 +132,6 @@ button:hover {
   padding-right: 8px;
   border-bottom: 2px solid @peach;
 }
+#tray {
+	background: #1a1a1a;
+}
