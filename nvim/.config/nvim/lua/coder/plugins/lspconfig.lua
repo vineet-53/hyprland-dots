@@ -22,7 +22,7 @@ return {
           "lua_ls",
           "clangd",
           "tsserver",
-          "rust_analyzer",
+          -- "rust_analyzer",
           "html",
           "cssls",
           "svelte",
@@ -30,8 +30,8 @@ return {
           "pyright",
           "bashls",
           "yamlls",
-          "gopls",
-          "jsonls",
+          -- "gopls",
+          -- "jsonls",
         },
       })
     end,
@@ -56,26 +56,6 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.clangd.setup({
         capabilities = capabilities,
-      })
-      lspconfig["lua_ls"].setup({
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                [vim.fn.stdpath("data") .. "/lazy/ui/nvchad_types"] = true,
-                [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
-              },
-              maxPreload = 100000,
-              preloadFileSize = 10000,
-            },
-          },
-        },
       })
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,

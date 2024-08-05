@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "x", '"_x')
-
+vim.keymap.set("n" , '<leader>o' , ":Telescope colorscheme<CR>")
 -- select a line
 vim.keymap.set("n" , "val" , "V")
 -- move line up and down
@@ -30,14 +30,10 @@ vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "#", "#zz")
 
 -- find and replace
-vim.keymap.set("n", "<A-l>", function()
+vim.keymap.set("n", "<leader>s", function()
   local cmd = ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>"
   local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
   vim.api.nvim_feedkeys(keys, "n", false)
-end)
-
-vim.keymap.set("n", "<leader>s", function()
-  require("spectre").toggle()
 end)
 
 --start and end nvaigation

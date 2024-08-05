@@ -1,3 +1,2 @@
 #!/bin/sh
-
-swaylock -i ~/Pictures/Wallpapers/Slideshow/anime-coffee-girl.jpg
+hyprlock --config ~/.config/hypr/hyprlock.conf

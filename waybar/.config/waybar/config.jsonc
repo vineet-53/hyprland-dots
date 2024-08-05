@@ -7,7 +7,6 @@
     "pulseaudio",
     "battery",
     "clock",
-    "tray",
   ],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",

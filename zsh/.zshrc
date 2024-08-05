@@ -4,8 +4,9 @@ export PATH="/bin:$HOME/.local/share/bin:$HOME/.venv/bin/pip:$HOME/.venv/bin/pyt
 # export PATH="/bin:$PATH"
 # Path to powerlevel10k theme
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# ZSH_THEME="robbyrussell"
-eval "$(starship init zsh)"
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="alanpeabody"
+# eval "$(starship init zsh)"
 # List of plugins used
 plugins=(git sudo history encode64 copypath zsh-autosuggestions  zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
@@ -122,6 +123,7 @@ alias hdd="cd /mnt/hdd"
 alias vim="nvim "
 alias pip="~/.venv/bin/pip "
 alias lg="lazygit"
+alias sol="~/.local/share/bin/search-on-yt.sh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

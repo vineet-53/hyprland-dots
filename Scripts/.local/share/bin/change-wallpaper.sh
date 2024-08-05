@@ -1,7 +1,7 @@
 #!/bin/bash
 # Set the path to your wallpapers directory
 # wallpapersDir="$HOME/Pictures/Wallpapers/Slideshow"
-wallpapersDir="$HOME/Pictures/Wallpapers/catppuccin-wallpapers/landscapes"
+wallpapersDir="$HOME/Pictures/Wallpapers/Slideshow/"
 # Get all image files in the directory
 wallpapers=("$wallpapersDir"/*)
 
@@ -19,6 +19,7 @@ while true; do
 
   # Select a random index from the wallpapers array
   wallpaperIndex=$((RANDOM % ${#wallpapers[@]}))
+  echo "index $wallpaperIndex"
   selectedWallpaper="${wallpapers[$wallpaperIndex]}"
 
   # Set the wallpaper using swww img
