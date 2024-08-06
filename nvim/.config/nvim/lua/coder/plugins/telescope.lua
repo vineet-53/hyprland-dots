@@ -15,6 +15,20 @@ return {
     local trouble = require("trouble")
     local trouble_telescope = require("trouble.sources.telescope")
 
+    local function find_command()
+      if 1 == vim.fn.executable("rg") then
+        return { "rg", "--files", "--color", "never", "-g", "!.git" }
+      elseif 1 == vim.fn.executable("fd") then
+        return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
+      elseif 1 == vim.fn.executable("fdfind") then
+        return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
+      elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
+        return { "find", ".", "-type", "f" }
+      elseif 1 == vim.fn.executable("where") then
+        return { "where", "/r", ".", "*" }
+      end
+    end
+
     local custom_actions = transform_mod({
       open_trouble_qflist = function(prompt_bufnr)
         trouble.toggle("quickfix")
@@ -24,14 +38,17 @@ return {
     telescope.setup({
       pickers = {
         live_grep = {
+          find_command = find_command,
           file_ignore_patterns = { "node_modules", ".git", ".venv" },
           additional_args = function(_)
             return { "--hidden" }
           end,
         },
         find_files = {
+          find_command = find_command,
           file_ignore_patterns = { "node_modules", ".git", ".venv" },
           hidden = true,
+          no_ignore = true,
         },
       },
       extensions = {
@@ -55,7 +72,7 @@ return {
         mappings = {
           i = {
             ["<C-p>"] = actions.move_selection_previous, -- move to prev result
-            ["<C-n>"] = actions.move_selection_next,     -- move to next result
+            ["<C-n>"] = actions.move_selection_next, -- move to next result
             ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
             ["<C-t>"] = trouble_telescope.open,
           },
@@ -69,7 +86,7 @@ return {
     vim.keymap.set("n", ";g", builtin.live_grep, { desc = "[G]rep String" })
     vim.keymap.set("n", ";b", builtin.buffers, { desc = "[F]ind Buffers" })
     vim.keymap.set("n", ";s", function()
-      local word  = vim.fn.expand("<cword>")
+      local word = vim.fn.expand("<cword>")
       builtin.grep_string({ search = word })
     end, { desc = "[S]earch current [W]ord" })
 

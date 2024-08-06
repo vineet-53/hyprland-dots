@@ -1,9 +1,10 @@
 vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
+-- Keybinds
 vim.keymap.set("n", "x", '"_x')
-vim.keymap.set("n" , '<leader>o' , ":Telescope colorscheme<CR>")
+vim.keymap.set("n", "<leader>o", ":Telescope colorscheme<CR>")
 -- select a line
-vim.keymap.set("n" , "val" , "V")
+vim.keymap.set("n", "val", "V")
 -- move line up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

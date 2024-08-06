@@ -15,6 +15,10 @@ return {
             package_uninstalled = "✗",
           },
         },
+        ensure_installed = {
+          "markdownlint-cli2",
+          "markdown-toc",
+        },
       })
       mason_lspconfig.setup({
         auto_install = true,

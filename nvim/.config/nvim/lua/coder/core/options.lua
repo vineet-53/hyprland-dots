@@ -1,20 +1,24 @@
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
-vim.opt.guicursor = ""
+opt.guicursor = ""
+opt.conceallevel = 1
 opt.number = true
+
+opt.undodir = "~/.undodir"
+opt.undofile = true
 
 -- tabs & indentation
 opt.rnu = true
-opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
+opt.tabstop = 4      -- 2 spaces for tabs (prettier default)
 
-opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.shiftwidth = 2   -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.wrap = false
 opt.swapfile = false
 
 -- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+opt.ignorecase = true  -- ignore case when searching
+opt.smartcase = true   -- if you include mixed case in your search, assumes you want case-sensitive
 opt.smartindent = true -- if you include mixed case in your search, assumes you want case-sensitive
 opt.incsearch = true
 
@@ -29,4 +33,3 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 vim.opt.clipboard = ""
 vim.opt.splitkeep = "cursor"
-

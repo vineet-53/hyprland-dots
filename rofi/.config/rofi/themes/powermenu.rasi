@@ -11,9 +11,9 @@ configuration {
 window {
     transparency:                   "real";
     background-color:               transparent;
-    text-color:                     @dark3;
+    text-color:                     @mauve;
     border:                  		5px;
-    border-color:                  	@dark3;
+    border-color:                  	@mauve;
     border-radius:                  15px;
     width:                          416px;
     location:                       center;
@@ -27,7 +27,7 @@ prompt {
   	margin: 						0px 0px 0px 8px;
     padding:    					6px 6px 6px 6px;
   	background-color: 				transparent;
-  	text-color: 					@dark3;
+  	text-color: 					@mauve;
     border:                  		0px 0px 0px 0px;
     border-color:                  	@dark2;
     border-radius:                  10px;
@@ -38,9 +38,10 @@ textbox-prompt-colon {
 	str: 							"⏻";
     border-radius:                  10px;
     background-color:               transparent;
-    text-color:                     @dark4;
+    text-color:                     @mauve;
     padding:    					6px 15px 6px 15px;
-	font:							"JetBrainsMono Nerd Font 11";
+    font: "MesloLGSNerd Font Mono 15";
+
 }
 
 entry {
@@ -61,7 +62,7 @@ inputbar {
     text-color:                     @dark5;
     border:                  		0px 0px 1px 0px;
     border-radius:                  10px;
-    border-color:                  	@dark3;
+    border-color:                  	@mauve;
     expand:                         false;
     margin:                         0px 0px 0px 0px;
     padding:                        0px;
@@ -94,11 +95,11 @@ mainbox {
 
 element {
     background-color:               transparent;
-    text-color:                     @dark4;
+    text-color:                     @mauve;
     orientation:                    horizontal;
     border:                  		2px;
     border-radius:                  10px;
-    border-color:                  	@dark4;
+    border-color:                  	@mauve;
     padding:                        23px 23px 23px 23px;
 }
 
@@ -114,7 +115,7 @@ element-icon {
 element-text {
     background-color: 				inherit;
     text-color:       				inherit;
-	font:							"feather 14";
+    font: "MesloLGSNerd Font Mono 15";
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
@@ -122,7 +123,7 @@ element-text {
 }
 
 element selected {
-    background-color:               @dark4;
+    background-color:               @mauve;
     text-color:                     @dark5;
     border:                  		0px;
     border-radius:                  10px;
