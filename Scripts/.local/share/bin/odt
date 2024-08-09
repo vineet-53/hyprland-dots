@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+formatted_file_name=$(date "+%Y-%m-%d").md
+cd "$HOME/Documents/Obsidian-Notes/" || exit
+touch "daily-task/${formatted_file_name}"
+nvim "daily-task/${formatted_file_name}"

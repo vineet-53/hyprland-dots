@@ -11,7 +11,9 @@ return {
     treesitter.setup({
       highlight = {
         enable = true,
+        additional_vim_regex_highlighting = false,
       },
+      indent = { enable = true },
       ensure_installed = {
         "json",
         "javascript",
@@ -28,6 +30,7 @@ return {
         "dockerfile",
         "gitignore",
         "c",
+        "cpp",
         "rust",
         "go",
         "gomod",
@@ -38,6 +41,8 @@ return {
         "svelte",
         "terraform",
         "toml",
+        "regex",
+        "vimdoc",
       },
     })
 

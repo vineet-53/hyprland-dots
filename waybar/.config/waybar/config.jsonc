@@ -56,7 +56,7 @@
       "work": "󰔟",
       "break": "",
     },
-    "exec": "waybar-module-pomodoro -w 45",
+    "exec": "waybar-module-pomodoro -w 15",
     "on-click": "waybar-module-pomodoro toggle",
     "on-click-right": "waybar-module-pomodoro reset",
   },

@@ -1,10 +1,11 @@
 #!/bin/bash
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    selected=$(find ~/Codes/projects ~/Codes/dsa -mindepth 1 -maxdepth 1 -type d | fzf)
-fi
-
+# if [[ $# -eq 1 ]]; then
+#     selected=$1
+# else
+#     # selected=$(find ~/Codes/projects ~/Codes/dsa -mindepth 1 -maxdepth 1 -type d | fzf)
+#     selected=$(find ~ -type d  | fzf --walker=,dir)
+# fi
+selected=$(fzf --walker=,dir --walker-root=$HOME)
 if [[ -z $selected ]]; then
     exit 0
 fi

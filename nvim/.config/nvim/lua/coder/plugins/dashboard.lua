@@ -3,7 +3,6 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-
   config = function()
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.startify")
@@ -29,4 +28,3 @@ return {
     alpha.setup(dashboard.opts)
   end,
 }
-

@@ -1,8 +1,25 @@
 return {
   {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        "prettier",
+        "stylua",
+        "isort",
+        "black",
+        "pylint",
+        "eslint_d",
+      },
+    },
+    config = function(_, opts)
+      require("mason-tool-installer").setup(opts)
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
       local mason = require("mason")
@@ -25,8 +42,9 @@ return {
         ensure_installed = {
           "lua_ls",
           "clangd",
+          "tailwindcss",
           "tsserver",
-          -- "rust_analyzer",
+          "rust_analyzer",
           "html",
           "cssls",
           "svelte",
@@ -34,8 +52,8 @@ return {
           "pyright",
           "bashls",
           "yamlls",
-          -- "gopls",
-          -- "jsonls",
+          "gopls",
+          "jsonls",
         },
       })
     end,
@@ -47,10 +65,10 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
       "antosha417/nvim-lsp-file-operations",
     },
     lazy = false,
@@ -79,14 +97,22 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
-
       --- vim auto cmmands
-
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+      --   vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      --   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      --   vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+      --   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+    end,
+  },
+  {
+    "nvimdev/lspsaga.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "LspAttach",
+    config = function()
+      require("lspsaga").setup()
     end,
   },
 }

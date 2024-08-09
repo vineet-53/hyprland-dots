@@ -1,6 +1,9 @@
 #!/bin/sh
 URL="https://earthshakira.github.io/a2oj-clientside/server/Ladders.html"
 xdg-open "$URL"
+URL="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/"
+xdg-open "$URL"
+
 cd ~/Codes/cp
 SESSION_NAME="codeforces"
 if tmux has-session -t $SESSION_NAME 2>/dev/null; then

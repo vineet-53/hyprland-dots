@@ -1,15 +1,133 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh/
-export PATH="/bin:$HOME/.local/share/bin:$HOME/.venv/bin/pip:$HOME/.venv/bin/python:$PATH"
-# export PATH="/bin:$PATH"
-# Path to powerlevel10k theme
-# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="alanpeabody"
+export PATH="/bin:$HOME/.local/share/bin:$HOME/.venv/bin/pip:$HOME/.venv/bin/python:$HOME/anaconda3/bin:$PATH"
+
+# Starship
 eval "$(starship init zsh)"
-# List of plugins used
-plugins=(git sudo history encode64 copypath zsh-autosuggestions  zsh-syntax-highlighting)
+# ZSH_THEME="robbyrussell"
+
+
+# List Plugins
+plugins=(git sudo history encode64 copypath zsh-autosuggestions zsh-syntax-highlighting web-search vi-mode)
+
+# sources
 source $ZSH/oh-my-zsh.sh
+
+# Helpful aliases
+alias  c='clear' # clear terminal
+alias  l='eza -lh  --icons=auto' # long list
+alias ls='eza -1 --icons=always' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
+alias un='$aurhelper -Rns' # uninstall package
+alias up='$aurhelper -Syu' # update system/package/aur
+alias pl='$aurhelper -Qs' # list installed package
+alias pa='$aurhelper -Ss' # list availabe package
+alias pc='$aurhelper -Sc' # remove unused cache
+alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+
+# Handy change dir shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#Display Pokemon
+# pokemon-colorscripts --no-title -r 1,3,6
+
+# Custom app alias
+alias cls= "clear"
+alias ml="cd ~/Codes/machine-learning"
+alias zconf="nvim ~/.zshrc"
+alias zcompile="source ~/.zshrc"
+# alias t="tmux "
+# alias ta="tmux attach "
+# alias tas="tmux attach-session "
+alias tmux="sh ~/.local/share/bin/tmux-sessionizer.sh"
+alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
+alias vim="nvim"
+alias setwall="swww img --transition-type=random "
+alias notes="~/Documents/Obsidian-Notes && nvim"
+alias cat="bat -pp"
+alias leet="nvim leetcode.nvim"
+alias pwdy="echo $(pwd) | wl-copy -p"
+alias view="yazi "
+alias vim="nvim "
+alias lg="lazygit"
+
+# Custom dir alias
+alias clones="cd ~/Downloads/clones"
+alias desk="cd ~/Desktop"
+alias temp="cd ~/temp"
+alias nvc='cd $HOME/.config/nvim && vim'
+
+# Custom Fuzzy finder
+alias inv="fzf --delimiter=' ' | nvim -f -"
+alias ff='fzf --preview="bat --color=always {}"'
+alias fd='fzf --walker=,dir'
+alias gd='cd $(fd)'
+alias fhome='fzf --walker=,dir --walker-root=$HOME'
+alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
+alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
+alias codes='cd $(fcodes)'
+
+# Disabled
+# alias twd='alacritty --working-directory=$(pwd) & exit'
+# alias fon='nvim $(ff)'
+# alias home='cd $(fhome)'
+# alias root='cd $(froot)'
+# alias vc='code' # gui code editor
+
+# Drives
+alias d="cd /mnt/drive"
+alias e="cd /mnt/drive2"
+alias hdd="cd /mnt/hdd"
+alias window="cd /mnt/window"
+
+# Custom Courses Video Play
+alias vid="cd /mnt/drive2/Telegram/0-100Cohort/0-100Cohort"
+alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
+
+# Git
+alias ga="git add "
+alias gc="git commit -m"
+alias gr="git reset "
+alias gs="git status "
+
+# Development
+alias server="npm run dev"
+
+# Custom Scripts
+alias sol="~/.local/share/bin/search-on-yt.sh"
+alias cpro="sh ~/.local/share/bin/competetive-programming.sh "
+
+# Machin Learning
+alias activate="source $HOME/.venv/bin/activate"
+
+# Python
+alias piv="~/.venv/bin/pip "
+
+# Jupyter
+alias jn='jupyter notebook --no-browser'
+alias jc='jupyter console'
+alias jl='jupyter lab --core-mode' # Fix for M1 mac
+
+# Exports
+# export EDIOTOR=nvim
+# export VISUAL=nvim
+export JUPYTER_NOTEBOOK_STYLE='from IPython.display import HTML;HTML("<style>div.text_cell_render{font-size:130%;padding-top:50px;padding-bottom:50px}</style>")'
+export NVM_DIR="$HOME/.nvm"
+
+# Nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Detect the AUR wrapper
 if pacman -Qi yay &>/dev/null ; then
@@ -17,6 +135,7 @@ if pacman -Qi yay &>/dev/null ; then
 elif pacman -Qi paru &>/dev/null ; then
    aurhelper="paru"
 fi
+
 function in {
     local -a inPkg=("$@")
     local -a arch=()
@@ -38,95 +157,5 @@ function in {
         ${aurhelper} -S "${aur[@]}"
     fi
 }
-
-# Helpful aliases
-alias  c='clear' # clear terminal
-alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1   --icons=auto' # short list
-alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto' # long list dirs
-alias lt='eza --icons=auto --tree' # list folder as tree
-alias un='$aurhelper -Rns' # uninstall package
-alias up='$aurhelper -Syu' # update system/package/aur
-alias pl='$aurhelper -Qs' # list installed package
-alias pa='$aurhelper -Ss' # list availabe package
-alias pc='$aurhelper -Sc' # remove unused cache
-alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-# alias vc='code' # gui code editor
-
-# Handy change dir shortcuts
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-alias mkdir='mkdir -p'
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-#Display Pokemon
-#pokemon-colorscripts --no-title -r 1,3,6
-
-# custom alias CUSTOM ALIAS
-alias clones="cd ~/Downloads/clones"
-alias si="sudo apt install "
-alias m="mkdir "
-#alias b="cd .."
-alias cpro="sh ~/.local/share/bin/competetive-programming.sh "
-alias dev="cd ~/Codes/Web-Development"
-alias ml="cd ~/Codes/MachineLearning"
-alias desk="cd ~/Desktop"
-alias temp="cd ~/temp"
-alias cls= "clear"
-alias zconf="nvim ~/.zshrc"
-alias zcompile="source ~/.zshrc"
-alias activate="ml && source venv/bin/activate"
-# alias t="tmux"
-alias v="vim "
-alias t="tmux "
-alias n="nvim"
-alias rconf="nvim ~/.local/share/bin/rofi-radio"
-alias setw="swww img --transition-type=random "
-alias inv="fzf --delimiter=' ' | nvim -f -"
-alias ff='fzf --preview="bat --color=always {}"'
-alias twd='alacritty --working-directory=$(pwd) & exit'
-alias fd='fzf --walker=,dir'
-alias fon='nvim $(ff)'
-alias gd='cd $(fd)'
-alias fhome='fzf --walker=,dir --walker-root=$HOME'
-alias home='cd $(fhome)'
-alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
-alias root='cd $(froot)'
-alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
-alias codes='cd $(fcodes)'
-alias rmrs="sudo rm -r"
-alias rmr="rm -r"
-alias window="cd /mnt/window"
-alias d="cd /mnt/drive"
-alias e="cd /mnt/drive2"
-alias vid="cd /mnt/drive2/Telegram/0-100Cohort/0-100Cohort"
-alias set-timer="nvim ~/.config/waybar/config.jsonc"
-alias ga="git add "
-alias gc="git commit -m"
-alias gr="git reset "
-alias gs="git status "
-alias server="npm run dev"
-alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
-alias t="sh ~/.local/share/bin/smux.sh"
-alias view="yazi "
-alias t="tmux"
-alias ta="tmux attach"
-alias hdd="cd /mnt/hdd"
-alias vim="nvim "
-alias pip="~/.venv/bin/pip "
-alias lg="lazygit"
-alias sol="~/.local/share/bin/search-on-yt.sh"
-alias notes="nvim ~/Documents/Obsidian-Notes"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
